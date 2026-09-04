@@ -1,0 +1,16 @@
+name: "excalidraw"
+aliases:
+  - "draw"
+  - "sketch"
+domain: "excalidraw.roadtotech.me"
+description: "Collaborative Whiteboarding & Sketching Tool"
+visible: true
+auth: false
+networks:
+  - proxy-net
+homepage:
+  title: "Excalidraw"
+  group: "Knowledge & Notes"
+  icon: "excalidraw.png"
+  container: "excalidraw-excalidraw-1"
+  weight: 20
