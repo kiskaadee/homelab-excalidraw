@@ -12,5 +12,5 @@ homepage:
   title: "Excalidraw"
   group: "Knowledge & Notes"
   icon: "excalidraw.png"
-  container: "excalidraw-excalidraw-1"
+  container: "excalidraw"
   weight: 20
