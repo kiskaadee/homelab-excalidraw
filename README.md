@@ -1,25 +1,37 @@
 # 🎨 Homelab Excalidraw
 
-Self-hosted virtual collaborative whiteboard for architecture sketches, visual notes, and diagrams.
-
-Part of the [homelab-core](https://github.com/kiskaadee/homelab-core) cluster ecosystem.
+Collaborative virtual whiteboard and diagramming tool for the `roadtotech.me` homelab cluster.
 
 ---
 
 ## 🏗️ Architecture & Requirements
 
-- **Container Image**: `excalidraw/excalidraw:latest`
-- **Proxy**: Traefik (attached to `proxy-net`)
-- **Domain**: `excalidraw.arch-services.mywire.org`
+- **Proxy Network**: Attached to external `proxy-net`
+- **Domain**: `excalidraw.roadtotech.me`
+- **Target Port**: `80` (HTTP Web), Socket.io backend support
 
 ---
 
-## ⚙️ Environment Variables
+## ⚙️ Configuration & Metadata (`app.yaml`)
 
-| Variable | Description | Default / Example |
-| :--- | :--- | :--- |
-| `EXCALIDRAW_DOMAIN` | Whiteboard FQDN | `excalidraw.arch-services.mywire.org` |
-| `PROXY_NETWORK` | External Docker network | `proxy-net` |
+```yaml
+name: "excalidraw"
+aliases:
+  - "draw"
+  - "sketch"
+domain: "excalidraw.roadtotech.me"
+description: "Collaborative Whiteboarding & Sketching Tool"
+visible: true
+auth: false
+networks:
+  - proxy-net
+homepage:
+  title: "Excalidraw"
+  group: "Knowledge & Notes"
+  icon: "excalidraw.png"
+  container: "excalidraw-excalidraw-1"
+  weight: 20
+```
 
 ---
 
@@ -27,10 +39,17 @@ Part of the [homelab-core](https://github.com/kiskaadee/homelab-core) cluster ec
 
 ### Via Orchestrator (`appctl`)
 ```bash
-appctl up homelab-excalidraw
+appctl up excalidraw
+# or using shortcut alias
+appctl up draw
 ```
 
 ### Manual Deployment
 ```bash
 docker compose up -d
 ```
+
+---
+
+## 📄 License
+This repository is released into the public domain under the [Unlicense](LICENSE).
